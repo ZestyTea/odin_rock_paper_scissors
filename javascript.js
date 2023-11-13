@@ -1,3 +1,4 @@
+
 function computerSelection() {
     const randomVariable = ["Rock", "Paper", "Scissors"];
     return randomVariable[Math.floor(Math.random() * randomVariable.length)];
@@ -54,4 +55,42 @@ function playRound(playerSelection, computerSelection) {
     }   
 }
 
-console.log(playRound(playerSelection, computerSelection))
+function game(rounds) {
+    console.log("Play " + rounds + " times and see who wins!")
+    let scorePlayer = 0
+    let scoreComputer = 0
+    for (let i = 0; i < rounds; i++) {
+        let winLoseOrDraw = playRound(playerSelection, computerSelection)
+        if (winLoseOrDraw === "Win") {
+            scorePlayer++
+        }
+        if (winLoseOrDraw === "Lose") {
+            scoreComputer++
+        }
+        console.log("Score is " + scorePlayer + " - " + scoreComputer)
+    }        
+    if (scorePlayer > scoreComputer) {
+        return ("Player wins!")
+    }
+        else if (scorePlayer < scoreComputer) {
+            return ("Computer wins!")    
+    }
+    else if (scorePlayer = scoreComputer) {
+        return ("Draw!")    
+}
+}
+
+function chooseHowManyRounds() {
+    input = prompt("Type how many rounds you want to play");
+
+        if (!isNaN(input)) {
+            return game(input)
+        }
+        else {
+            alert("write a number")
+            chooseHowManyRounds()
+        }
+}
+
+chooseHowManyRounds()
+
